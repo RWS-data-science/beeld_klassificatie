@@ -15,7 +15,7 @@ if(!dir.exists('db/netwerk')){
 
 #############
 #zet parametrs
-selectie =  selectie(spl = 0.8, path = "/home/beheerder/R/beeldenbank/gelabeled/borden_closeup/plaatjes") #in path directory moeten de plaatjes per categorie in een directory staan
+selectie =  selectie(spl = 0.8, path = "/home/beheerder/R/beeldenbank/gelabeled/borden_closeup/plaatjes")
 selectie_train = selectie[[1]]
 selectie_test = selectie[[2]]
 aantal_pool  = 3
@@ -28,7 +28,7 @@ max_accuracy = 0.97 #opslaan vanaf
 out = 0.5 #dropout
 batch_train = 50 #batchsize
 batch_test = 100 #batchsize test
-ds = 0.99 #gradient descent
+ds = 0.999 #gradient descent
 lr = 1e-3 #learningrate
 
 h = as.integer(224) #heigth image
