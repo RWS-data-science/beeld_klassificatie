@@ -170,6 +170,14 @@ for (i in 1:20000) {
   
   #valideer om de 100 keer hoe het gaat op de testset
   if (i %% 100 == 0) {
+    
+    #sla variabelen op
+    saver = tf$train$Saver()$save(sess, "db/model.ckpt")
+    
+    #evalueer op de trainset
+    train_accuracy <- accuracy$eval(feed_dict = dict(  x = train, labels = train_labels, keep_prob = 1.0))
+    print( paste("step:", i, "train accuracy:", train_accuracy) )
+    
     #evalueer op de testset
     samp = sample( x=  c(1: nrow(selectie_test)) , size = batch_test )
     test_labels =one_hot(selectie_test$labels[samp])
@@ -219,7 +227,8 @@ for (i in 1:20000) {
 ##############################3
 #laad netwerk weer in
 
-#saver$restore(sess, "model.ckpt")
+#
+#saver$restore(sess, "db/model.ckpt")
 # 
 # w_conv1_1= readRDS( file = 'db/netwerk/w_conv1_1.rds')
 # w_conv1_1 = tf$cast(w_conv1_1, tf$float32)

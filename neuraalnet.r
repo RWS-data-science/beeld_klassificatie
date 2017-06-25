@@ -155,10 +155,11 @@ for (i in 1:20000) {
   
   
   #valideer om de 100 keer hoe het gaat op de testset
-  if (i %% 100 == 0) {
+  if (i %% 1 == 0) {
     
     #sla variabelen op
-    saver = tf$train$Saver()
+    saver = tf$train$Saver()$save(sess, "db/model.ckpt")
+    
     
     #evalueer op de trainset
     train_accuracy <- accuracy$eval(feed_dict = dict(  x = train, labels = train_labels, keep_prob = 1.0))
@@ -211,7 +212,7 @@ for (i in 1:20000) {
 #laad netwerk weer in
 # 
 
-#saver$restore(sess, "model.ckpt")
+#saver$restore(sess, "db/model.ckpt")
 
 
 # w_conv1 = readRDS( file = 'db/netwerk/w_conv1.rds')
