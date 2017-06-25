@@ -218,6 +218,8 @@ for (i in 1:20000) {
 
 ##############################3
 #laad netwerk weer in
+
+#saver$restore(sess, "model.ckpt")
 # 
 # w_conv1_1= readRDS( file = 'db/netwerk/w_conv1_1.rds')
 # w_conv1_1 = tf$cast(w_conv1_1, tf$float32)
